@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Curso</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 400px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-color: #4facfe;
+            box-shadow: 0 0 5px rgba(79,172,254,0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #4facfe;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0077ff;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #777;
+        }
+              
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>📚 Agregar Curso</h2>
+    {% if mensaje %}
+<div style="
+    background:#d1fae5;
+    color:#065f46;
+    padding:10px;
+    border-radius:10px;
+    margin-bottom:15px;
+    text-align:center;
+">
+    {{ mensaje }}
+</div>
+{% endif %}
+
+    <form action="/admin/agregar_curso" method="POST">
+
+        <label>Nombre del curso</label>
+        <input type="text" name="nombre" placeholder="Ej: Python Básico" required>
+
+        <label>Categoría</label>
+        <input type="text" name="categoria" placeholder="Ej: Programación" required>
+
+        <label>Nivel</label>
+        <select name="nivel" required>
+            <option value="">Selecciona un nivel</option>
+            <option value="Básico">Básico</option>
+            <option value="Intermedio">Intermedio</option>
+            <option value="Avanzado">Avanzado</option>
+        </select>
+
+        <button type="submit">➕ Guardar Curso</button>
+    
+
+        <a href="/admin" style="display:block; text-align:center; margin-top:10px; color:#333;">
+         ⬅ Volver al inicio
+         </a>
+    </form>
+               
+    <div class="footer">
+        Sistema de cursos Flask + SQLite
+    </div>
+</div>
+
+</body>
+</html>

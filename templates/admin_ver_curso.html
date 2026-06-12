@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Admin - Curso</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 30px;
+}
+
+.container{
+    max-width: 900px;
+    margin: auto;
+}
+
+.card{
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+h1{
+    margin: 0;
+    color: #333;
+}
+
+.badge{
+    display: inline-block;
+    background: #4facfe;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.section-title{
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.material{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.material a{
+    text-decoration: none;
+    color: #4facfe;
+}
+
+.btn-back{
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background: #111;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+    <h1>📚 {{ curso[1] }}</h1>
+
+    <div class="badge">Categoría: {{ curso[2] }}</div>
+    <div class="badge">Nivel: {{ curso[3] }}</div>
+
+    <div class="section-title">📂 Materiales</div>
+
+    {% if materiales %}
+        {% for m in materiales %}
+            <div class="material">
+                <span>📄 {{ m[2] }}</span>
+                <a href="{{ url_for('static', filename='materiales/' + m[2]) }}" target="_blank">
+                    Ver archivo
+                </a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No hay materiales subidos.</p>
+    {% endif %}
+
+    <a class="btn-back" href="/admin/cursos">⬅ Volver</a>
+
+</div>
+
+</div>
+
+</body>
+</html>

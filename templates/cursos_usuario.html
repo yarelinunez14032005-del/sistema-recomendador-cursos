@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cursos Disponibles</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+    background:#f4f6f9;
+    font-family:'Segoe UI',sans-serif;
+}
+
+/* Navbar */
+
+.navbar-custom{
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    padding:15px;
+}
+
+.navbar-brand{
+    color:white !important;
+    font-size:22px;
+}
+
+/* Banner */
+
+.banner{
+    background:white;
+    border-radius:20px;
+    padding:40px;
+    text-align:center;
+    margin-top:30px;
+    box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.banner h1{
+    font-weight:bold;
+}
+
+.banner p{
+    color:#666;
+}
+
+/* Tarjetas */
+
+.card-curso{
+    border:none;
+    border-radius:20px;
+    overflow:hidden;
+    transition:.3s;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.card-curso:hover{
+    transform:translateY(-8px);
+}
+
+.icono{
+    font-size:70px;
+    text-align:center;
+    padding-top:20px;
+}
+
+.badge-categoria{
+    padding:8px 15px;
+    border-radius:20px;
+    color:white;
+    font-size:12px;
+}
+
+.programacion{
+    background:#0d6efd;
+}
+
+.basedatos{
+    background:#6f42c1;
+}
+
+.ia{
+    background:#198754;
+}
+
+.redes{
+    background:#fd7e14;
+}
+
+.ciber{
+    background:#dc3545;
+}
+
+.btn-curso{
+    width:100%;
+    border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-custom">
+
+
+<div class="container">
+
+    <a class="navbar-brand fw-bold">
+        🎓 Sistema Recomendador
+    </a>
+
+    <div class="ms-auto">
+
+        <a href="/" class="btn btn-light">
+            🏠 Inicio
+        </a>
+
+    </div>
+
+</div>
+
+
+</nav>
+
+<div class="container">
+
+
+<div class="banner">
+
+    <h1>📚 Cursos Disponibles</h1>
+
+    <p>
+        Explora todos los cursos registrados en la plataforma.
+    </p>
+
+    <input
+        type="text"
+        id="buscar"
+        class="form-control mt-3"
+        placeholder="🔍 Buscar curso..."
+        onkeyup="filtrarCursos()">
+
+</div>
+
+<div class="row mt-5" id="contenedorCursos">
+
+    {% for c in cursos %}
+
+    <div class="col-md-4 mb-4 curso">
+
+        <div class="card card-curso h-100">
+
+            <div class="icono">
+
+                {% if c[2] == "Programación" %}
+                    💻
+                {% elif c[2] == "Base de Datos" %}
+                    🗄️
+                {% elif c[2] == "Inteligencia Artificial" %}
+                    🤖
+                {% elif c[2] == "Redes" %}
+                    🌐
+                {% elif c[2] == "Ciberseguridad" %}
+                    🔒
+                {% else %}
+                    📚
+                {% endif %}
+
+            </div>
+
+            <div class="card-body text-center">
+
+                <h4 class="titulo-curso">
+                    {{ c[1] }}
+                </h4>
+
+                {% if c[2] == "Programación" %}
+                    <span class="badge-categoria programacion">
+                        {{ c[2] }}
+                    </span>
+
+                {% elif c[2] == "Base de Datos" %}
+                    <span class="badge-categoria basedatos">
+                        {{ c[2] }}
+                    </span>
+
+                {% elif c[2] == "Inteligencia Artificial" %}
+                    <span class="badge-categoria ia">
+                        {{ c[2] }}
+                    </span>
+
+                {% elif c[2] == "Redes" %}
+                    <span class="badge-categoria redes">
+                        {{ c[2] }}
+                    </span>
+
+                {% elif c[2] == "Ciberseguridad" %}
+                    <span class="badge-categoria ciber">
+                        {{ c[2] }}
+                    </span>
+
+                {% else %}
+                    <span class="badge bg-secondary">
+                        {{ c[2] }}
+                    </span>
+                {% endif %}
+
+                <p class="mt-3">
+                    Nivel:
+                    <strong>{{ c[3] }}</strong>
+                </p>
+
+            </div>
+
+            <div class="card-footer bg-white border-0">
+
+                <a href="/curso/{{ c[0] }}"
+                   class="btn btn-primary btn-curso">
+
+                    🚀 Entrar al Curso
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+<div class="text-center mb-5">
+
+    <a href="/" class="btn btn-outline-secondary">
+        ⬅ Volver al Inicio
+    </a>
+
+</div>
+
+
+</div>
+
+<script>
+
+function filtrarCursos(){
+
+    let filtro =
+    document.getElementById("buscar")
+    .value
+    .toLowerCase();
+
+    let cursos =
+    document.querySelectorAll(".curso");
+
+    cursos.forEach(curso => {
+
+        let texto =
+        curso.innerText.toLowerCase();
+
+        if(texto.includes(filtro)){
+            curso.style.display="";
+        }else{
+            curso.style.display="none";
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+
+</html>

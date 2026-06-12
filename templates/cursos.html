@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cursos</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .titulo {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .categoria {
+            background: #4facfe;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .nivel {
+            margin-top: 10px;
+        }
+
+        .bajo { color: green; }
+        .medio { color: orange; }
+        .alto { color: red; }
+
+        .btn {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            background: #4facfe;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #0077ff;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background: #b52a37;
+        }
+
+        .nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .nav a {
+            margin: 5px;
+            padding: 10px 15px;
+            background: #111;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>📚 Lista de Cursos</h1>
+
+<div class="nav">
+    <a href="/cursos">📚 Recargar</a>
+    <a href="/">🏠 Inicio</a>
+</div>
+
+<div class="container">
+
+    {% for c in cursos %}
+
+    <div class="card">
+
+        <div class="titulo">{{ c[1] }}</div>
+
+        <div class="categoria">{{ c[2] }}</div>
+
+        {% if c[3] == "Básico" %}
+            <div class="nivel bajo">🟢 Básico</div>
+        {% elif c[3] == "Intermedio" %}
+            <div class="nivel medio">🟠 Intermedio</div>
+        {% else %}
+            <div class="nivel alto">🔴 Avanzado</div>
+        {% endif %}
+
+        <!-- BOTÓN VER CURSO -->
+        <a href="/curso/{{ c[0] }}?back=/cursos">
+            👁 Ver curso
+        </a>
+
+        <!-- BOTÓN ELIMINAR -->
+        <a class="btn btn-danger"
+           onclick="return confirm('¿Seguro que quieres eliminar este curso?')"
+           href="/eliminar_curso/{{ c[0] }}">
+           🗑 Eliminar
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

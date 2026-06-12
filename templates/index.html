@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Recomendador de Cursos</title>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+
+{% if config %}
+
+    {% if config[0] == 'oscuro' %}
+
+    body{
+        background:#121212 !important;
+        color:white !important;
+    }
+
+    .card-principal{
+        background:#1e1e1e !important;
+        color:white !important;
+    }
+
+    .titulo{
+        color:white !important;
+    }
+
+    .navbar-custom{
+        background:#1e1e1e !important;
+    }
+
+    {% endif %}
+
+    {% if config[1] == 'verde' %}
+
+    .btn-custom{
+        background:#16a34a !important;
+    }
+
+    {% elif config[1] == 'rojo' %}
+
+    .btn-custom{
+        background:#dc2626 !important;
+    }
+
+    {% elif config[1] == 'morado' %}
+
+    .btn-custom{
+        background:#7c3aed !important;
+    }
+
+    {% endif %}
+
+{% endif %}
+
+</style>
+
+
+</head>
+
+<body>
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold text-white">
+            🎓 Recomendador de Cursos
+        </a>
+
+        <div class="ms-auto">
+
+            <a href="/perfil" class="btn btn-light me-2">
+                👤 Perfil
+            </a>
+
+            <a href="/cursos" class="btn btn-light me-2">
+                📚 Ver Cursos
+            </a>
+
+            <a href="/configuracion" class="btn btn-warning me-2">
+                ⚙️ Configuración
+            </a>
+
+            <a href="/logout" class="btn btn-danger">
+                🚪 Cerrar Sesión
+            </a>
+
+        </div>
+
+    </div>
+</nav>
+
+<!-- Contenido -->
+<div class="container mt-5">
+
+    <div class="card-principal">
+
+        <h1 class="titulo text-center mb-3">
+            Sistema Recomendador de Cursos
+        </h1>
+
+        <p class="text-center text-muted mb-4">
+            Encuentra cursos según tus intereses y nivel de conocimiento.
+        </p>
+
+        <!-- Formulario -->
+        <form action="/recomendar" method="POST">
+
+            <div class="mb-3">
+
+                <select name="categoria" class="form-select form-select-lg">
+
+                    <option value="">
+                        Selecciona una categoría
+                    </option>
+
+                    <option value="Programación">
+                        Programación
+                    </option>
+
+                    <option value="Base de Datos">
+                        Base de Datos
+                    </option>
+
+                    <option value="Inteligencia Artificial">
+                        Inteligencia Artificial
+                    </option>
+
+                    <option value="Redes">
+                        Redes
+                    </option>
+
+                    <option value="Ciberseguridad">
+                        Ciberseguridad
+                    </option>
+
+                </select>
+
+            </div>
+
+            <button type="submit" class="btn btn-custom w-100">
+                🎯 Recomendar Curso
+            </button>
+
+        </form>
+
+        <hr>
+
+        <h3 class="text-center mb-4">
+            Categorías Disponibles
+        </h3>
+
+        <div class="row">
+            <a href="/cursos/categoria/programacion" class="text-decoration-none text-dark">
+            </a>
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm text-center">
+                    <div class="card-body">
+                        💻
+                        <h5 class="mt-2">Programación</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm text-center">
+                    <div class="card-body">
+                        📊
+                        <h5 class="mt-2">Base de Datos</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm text-center">
+                    <div class="card-body">
+                        🤖
+                        <h5 class="mt-2">Inteligencia Artificial</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm text-center">
+                    <div class="card-body">
+                        🌐
+                        <h5 class="mt-2">Redes</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm text-center">
+                    <div class="card-body">
+                        🔒
+                        <h5 class="mt-2">Ciberseguridad</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm text-center">
+                    <div class="card-body">
+                        📱
+                        <h5 class="mt-2">Desarrollo Móvil</h5>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

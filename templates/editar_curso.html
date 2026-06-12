@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Editar Curso</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f4f6f9;
+    padding:30px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    margin-bottom:20px;
+}
+
+input, select{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+}
+
+button{
+    background:#4facfe;
+    color:white;
+    padding:10px;
+    border:none;
+    width:100%;
+    border-radius:10px;
+}
+
+.material{
+    display:flex;
+    justify-content:space-between;
+    padding:10px;
+    border-bottom:1px solid #eee;
+}
+
+.btn-delete{
+    color:red;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- CURSO -->
+<div class="card">
+
+<h2>✏ Editar Curso</h2>
+
+<form method="POST">
+
+<input type="text" name="nombre" value="{{ curso[1] }}" required>
+<input type="text" name="categoria" value="{{ curso[2] }}" required>
+
+<select name="nivel">
+    <option {{ 'selected' if curso[3]=='Básico' else '' }}>Básico</option>
+    <option {{ 'selected' if curso[3]=='Intermedio' else '' }}>Intermedio</option>
+    <option {{ 'selected' if curso[3]=='Avanzado' else '' }}>Avanzado</option>
+</select>
+
+<button>Guardar cambios</button>
+
+</form>
+
+</div>
+
+<!-- MATERIAL -->
+<div class="card">
+
+<h3>📂 Materiales del curso</h3>
+
+{% if materiales %}
+    {% for m in materiales %}
+        <div class="material">
+            <span>📄 {{ m[2] }}</span>
+
+            <div>
+                <a href="{{ url_for('static', filename='materiales/' + m[2]) }}" target="_blank">
+                    Ver
+                </a>
+
+                <a class="btn-delete" href="/eliminar_material/{{ m[0] }}">
+                    Eliminar
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No hay materiales</p>
+{% endif %}
+
+</div>
+
+<a href="/admin/cursos">⬅ Volver</a>
+
+</div>
+
+</body>
+</html>

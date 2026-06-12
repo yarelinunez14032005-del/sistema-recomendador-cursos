@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #0f172a;
+    color: white;
+}
+
+/* ===== SIDEBAR ===== */
+.menu-btn{
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 35px;
+    cursor: pointer;
+    z-index: 1000;
+    color: white;
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 240px;
+    height: 100%;
+    background: #111827;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.sidebar.active{
+    left: 0;
+}
+
+.sidebar a{
+    display: block;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.sidebar a:hover{
+    background: #1f2937;
+}
+
+.perfil-mini{
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #1f2937;
+    border-radius: 10px;
+}
+
+/* ===== MAIN ===== */
+.main{
+    margin-left: 0;
+    padding: 40px;
+}
+
+.header h1{
+    margin: 0;
+}
+
+.header p{
+    color: #94a3b8;
+}
+
+/* ===== STATS ===== */
+.stats{
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.card.small{
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 12px;
+    flex: 1;
+    text-align: center;
+}
+
+/* ===== CURSOS ===== */
+.section-title{
+    margin-top: 30px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.course-card{
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.course-card:hover{
+    transform: translateY(-5px);
+}
+
+.progress-bar{
+    width: 100%;
+    background: #334155;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 10px;
+    margin: 10px 0;
+}
+
+.progress{
+    height: 100%;
+    background: #38bdf8;
+}
+
+/* ===== DARK MODE ===== */
+body.dark{
+    background: #020617;
+}

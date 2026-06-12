@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Subir Material</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f6f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.card{
+    background:white;
+    width:500px;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+h1{
+    color:#4f46e5;
+}
+
+select,
+input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+.btn{
+    width:100%;
+    padding:12px;
+    background:#4f46e5;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.btn:hover{
+    background:#4338ca;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Subir Material</h1>
+
+<!-- 🔥 MENSAJE DE ÉXITO AQUÍ -->
+    {% if request.args.get('msg') == 'archivo_subido' %}
+    <div style="
+        background:#d1fae5;
+        color:#065f46;
+        padding:10px;
+        border-radius:10px;
+        margin-bottom:15px;
+        text-align:center;
+    ">
+        ✅ Archivo subido correctamente
+    </div>
+    {% endif %}
+
+<form action="/guardar_material" method="POST" enctype="multipart/form-data">
+
+    <label>Curso:</label>
+
+    <select name="curso_id" required>
+        {% for curso in cursos %}
+        <option value="{{ curso[0] }}">
+            {{ curso[1] }}
+        </option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    <label>Archivo:</label>
+
+    <input type="file" name="archivo" required>
+
+    <br><br>
+
+    <button class="btn" type="submit">
+        Subir Archivo
+    </button>
+
+</form>
+<a href="/">← Volver al panel
+</a>

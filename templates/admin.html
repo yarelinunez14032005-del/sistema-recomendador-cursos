@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+
+<style>
+body{
+    font-family: Arial;
+    margin:0;
+    background:#f4f6f9;
+}
+
+header{
+    background:#1e40af;
+    color:white;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:30px;
+}
+
+.welcome{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    text-align:center;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card a{
+    display:block;
+    margin-top:10px;
+    padding:10px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+}
+
+.card a:hover{
+    background:#1e4ed8;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <h2>🛠 Panel de Administración</h2>
+
+    <div>
+        <a href="/perfil" style="color:white; margin-right:15px;">👤 Perfil</a>
+        <a href="/logout" style="color:white;">Cerrar sesión</a>
+    </div>
+</header>
+
+<div class="container">
+
+<!-- BIENVENIDA -->
+<div class="welcome">
+    <h2>Bienvenido, {{ usuario }}</h2>
+    <p>Gestiona cursos, usuarios y materiales del sistema.</p>
+</div>
+
+<!-- DASHBOARD -->
+<div class="grid">
+
+    <div class="card">
+        <h3>📚 Cursos</h3>
+        <p>Administrar cursos del sistema</p>
+        <a href="/admin/cursos">Ver cursos</a>
+    </div>
+
+    <div class="card">
+        <h3>➕ Agregar curso</h3>
+        <p>Crear nuevos cursos</p>
+        <a href="/admin/agregar_curso">Ir</a>
+    </div>
+
+    <div class="card">
+        <h3>📤 Materiales</h3>
+        <p>Subir archivos a cursos</p>
+        <a href="/subir_material">Subir</a>
+    </div>
+
+    <div class="card">
+        <h3>👥 Usuarios</h3>
+        <p>Ver usuarios registrados</p>
+        <a href="/usuarios">Ver</a>
+    </div>
+
+</div>
+
+</div>
+
+</body>
+</html>

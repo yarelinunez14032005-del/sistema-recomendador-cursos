@@ -1,0 +1,50 @@
+body{
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    min-height:100vh;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.card-principal{
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.titulo{
+    font-weight:bold;
+    color:#2d3748;
+}
+
+.btn-custom{
+    background:#667eea;
+    color:white;
+    border:none;
+    border-radius:10px;
+    padding:12px 25px;
+}
+
+.btn-custom:hover{
+    background:#5a67d8;
+}
+
+.progreso{
+    height:20px;
+    border-radius:20px;
+}
+
+.navbar-custom{
+    background:white;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+.usuario{
+    font-weight:bold;
+    color:#667eea;
+}
+
+.error{
+    color:red;
+    margin-top:10px;
+    margin-bottom:10px;
+}

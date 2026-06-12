@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Usuarios</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f4f6f9;
+    padding:20px;
+}
+
+table{
+    width:100%;
+    border-collapse: collapse;
+    background:white;
+}
+
+th, td{
+    padding:10px;
+    border:1px solid #ddd;
+    text-align:center;
+}
+
+th{
+    background:#1e40af;
+    color:white;
+}
+
+.btn{
+    padding:6px 10px;
+    background:red;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>👥 Usuarios registrados</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Rol</th>
+    </tr>
+
+    {% for u in usuarios %}
+    <tr>
+        <td>{{ u[0] }}</td>
+        <td>{{ u[1] }}</td>
+        <td>{{ u[2] }}</td>
+        <td>{{ u[3] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+
+<a href="/admin" class="btn">⬅ Volver</a>
+
+</body>
+</html>

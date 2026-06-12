@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>{{ curso[1] }}</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.header h1{
+    color:#333;
+    margin-bottom:10px;
+}
+
+.header p{
+    color:#777;
+}
+
+.badge{
+    display:inline-block;
+    background:#4facfe;
+    color:white;
+    padding:8px 15px;
+    border-radius:30px;
+    font-size:14px;
+}
+
+.info{
+    margin-top:15px;
+    font-size:18px;
+}
+
+.progreso{
+    margin-top:20px;
+}
+
+.barra{
+    width:100%;
+    background:#ddd;
+    height:20px;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.barra-interna{
+    width:0%;
+    height:100%;
+    background:#28a745;
+}
+
+.material{
+    background:#f8f9fa;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.btn{
+    display:inline-block;
+    padding:10px 15px;
+    background:#4facfe;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+}
+
+.btn:hover{
+    background:#0077ff;
+}
+
+.btn-success{
+    background:#28a745;
+}
+
+.btn-success:hover{
+    background:#1d7f34;
+}
+
+.curso-info{
+    margin-top:25px;
+    background:#eef6ff;
+    padding:20px;
+    border-radius:15px;
+}
+
+.back{
+    display:inline-block;
+    margin-top:20px;
+    text-decoration:none;
+    color:#333;
+    font-weight:bold;
+}
+
+.back:hover{
+    color:#0077ff;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+
+<div class="card">
+
+    <div class="header">
+
+        <h1> BIENVENIDOS {{ curso[1] }}</h1>
+
+        <p>
+            Aprende a tu ritmo con los materiales disponibles.
+        </p>
+
+        <div class="badge">
+            {{ curso[2] }}
+        </div>
+
+    </div>
+
+    <div class="info">
+        📈 Nivel: <strong>{{ curso[3] }}</strong>
+    </div>
+
+    <div class="progreso">
+
+        <h3>📊 Progreso del Curso</h3>
+
+        <div class="barra">
+        <div class="barra-interna"
+         style="width: {{ progreso }}%;">
+        </div>
+    </div>
+
+    <p>{{ progreso }}% completado</p>
+
+    <hr>
+
+    <h3>📁 Materiales del Curso</h3>
+
+    {% if materiales %}
+
+        {% for m in materiales %}
+
+            <div class="material">
+
+                <span>
+                    📄 {{ m[2] }}
+                </span>
+
+                <a
+                    class="btn"
+                    href="/abrir_material/{{ m[0] }}"
+                    target="_blank">
+
+                    Abrir
+
+                </a>
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No hay materiales disponibles todavía.</p>
+
+    {% endif %}
+
+    <div class="curso-info">
+
+        <h3>ℹ Información del Curso</h3>
+
+        <p>
+            <strong>Categoría:</strong>
+            {{ curso[2] }}
+        </p>
+
+        <p>
+            <strong>Nivel:</strong>
+            {{ curso[3] }}
+        </p>
+
+        <p>
+            <strong>Materiales:</strong>
+            {{ materiales|length }}
+        </p>
+
+    </div>
+
+    <br>
+
+    <br>
+
+    <a class="back" href="{{ back if back else '/cursos' }}">
+        ⬅ Volver a Cursos
+    </a>
+
+</div>
+
+
+</div>
+
+</body>
+
+</html>
